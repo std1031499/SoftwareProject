@@ -1,0 +1,164 @@
+import java.util.Scanner;
+public class Task2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Expression e = new Expression();
+		e.ChooseAmount();
+		e.ChooseMD();
+		e.ChooseNumberRange();
+		for(int i=0;i<e.tNumber;i++)
+		{
+			e.RandomNumber();
+			
+			 if(e.mDChoose==1)
+			 {
+				 
+				 e.RandomOperatorOne();
+			 }
+			 else if(e.mDChoose==2)
+			 {
+				 
+				 e.RandomOperatorTwo();
+			 }
+			 
+			e.RandomNumberChange();
+			e.ShowEquation();
+			
+			if(e.operator == '-')
+			{
+				e.JudgeNegative();
+			}
+			if(e.operator == '/')
+			{
+				e.JudgeReminder();
+			}
+		}	
+	}
+
+}
+class Expression//表达式类 存放表达式
+{
+	
+	int  number1 ; //第一个数
+	int  number2 ; //第二个数
+	char operator ;//运算符
+	int tNumber;//题目数
+	int mDChoose;//乘除选择
+	int range;//数值范围
+	int i,j;
+	public Expression()
+	{
+		number1=number2=0;
+		operator = '+';
+	}
+	
+
+	 void ChooseAmount()//题目数量
+	 {
+		 System.out.println("Please input your title numbers");
+		 Scanner t = new Scanner(System.in);
+		  tNumber = t.nextInt();
+	 }
+	 
+	 void JudgeRepeat()//判断重复
+	 {
+		 
+	 }
+	 
+	 void ChooseMD()//选择是否有乘除法
+	 {
+		 System.out.println("Please choose Multiply and Divide or not.    1 for Yes 2 for No");
+		 Scanner m = new Scanner(System.in);
+		  mDChoose = m.nextInt();
+	 }
+	 
+	 void ChooseNumberRange()//选择数值范围
+	 {
+		 System.out.println("Please input Number Range.   you just need to input the biggest number in the range");
+		 Scanner r = new Scanner(System.in);
+		 range = r.nextInt();
+	 }
+	 
+	 void RandomNumber()//随机数赋值
+	 {		 
+		 number1 = (int)(Math.random()*range);
+		 number2 = (int)(Math.random()*range);		 
+	 }
+	 
+	 void RandomNumberChange()//解决一些数学的算法问题
+	 {
+		 while(operator == '/'&&number2 == 0)
+		 {
+			 RandomNumber();
+		 }
+	 }
+	 void RandomOperatorOne()//运算符有乘除法
+	 {
+		 int operatorNum = (int)(Math.random()*100);
+		 for(i=0;i<tNumber;i++)
+		 {
+			 if(operatorNum%4 == 0)
+			 {
+				 operator = '+';
+			 }
+			 else if(operatorNum%4 == 1)
+			 {
+				 operator = '-';
+			 }
+			 else if(operatorNum%4 == 2)
+			 {
+				 operator = '*';
+			 }
+			 else if(operatorNum%4 == 3)
+			 {
+				 operator = '/';
+			 }
+		 }
+
+	 }
+	 
+	 void RandomOperatorTwo()//运算符无乘除法
+	 {
+		 int operatorNum = (int)(Math.random()*100);
+		 for(i=0;i<tNumber;i++)
+		 {
+			 if(operatorNum%2 == 0)
+			 {
+				 operator = '+';
+			 }
+			 else if(operatorNum%2 == 1)
+			 {
+				 operator = '-';
+			 }
+		 }
+		 
+	 }
+	 
+	 void JudgeNegative()//判断加减是否有负数
+	 {
+		if(number1>number2)
+			System.out.println("Hava negative number");
+	 }
+	 
+	 void JudgeReminder()//判断除是否有余数
+	 {
+		 if(number1%number2 == 0)
+		 {
+				System.out.println("Not hava reminder");
+		 }
+		 
+		 else if(number1%number2 != 0)
+		 {
+		  System.out.println("hava reminder");
+		 }
+
+	 }
+	 
+	 void ShowEquation()//显示算式
+	 {
+
+		 System.out.println(number1 +" "+ operator+" "+ number2 +" =");
+	 }
+
+}
