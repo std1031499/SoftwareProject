@@ -1,0 +1,248 @@
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+public class size {
+
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+		Scanner in=new Scanner(System.in);
+		System.out.println("请选择进行整数或真分数的运算（整数运算请输入1，真分数运算请输入0）");
+		int choice=in.nextInt();
+		System.out.println("请输入要做的题目数量");
+		int dingzhi=in.nextInt();
+		System.out.println("请选择是否有乘除法（有请输入1，没有请输入0）");
+		int chengchu =in.nextInt();
+		System.out.println("请选择除法有无余数(有请输入1，没有请输入0)");
+		int yushu=in.nextInt();
+		System.out.println("请输入数值范围");
+		int n=in.nextInt();
+		if(choice==1)
+		{
+			for(int i=0;i<dingzhi;i++)
+			{
+				int a,b,x,y;
+				a=(int)(Math.random()*n); //生成一个随机数
+				b=(int)(Math.random()*n); //生成一个随机数
+				y=(int)(Math.random()*n); //生成一个随机数
+				x=y%4;
+		    if(x==0)
+		    {
+		    	System.out.println(a+"+"+b+"=");
+		    	}
+		    else if(x==1)
+		    {
+		    	System.out.println(a+"-"+b+"=");
+		    	}
+		    else if(x==2)
+		    {
+		    	if(chengchu==1)
+		    	{
+		    		System.out.println(a+"*"+b+"=");
+		    	}
+		    	else if(chengchu==0)
+		    	{
+		    		System.out.println(a+"+"+b+"=");
+		    	}
+			    }
+		    else if(x==3)
+		   {
+		    	if(chengchu==1)
+		    	{
+		    		if(yushu==1)
+		    		{
+		    			int a1=0;
+		    			int b1=0;
+		    			while(b1-a1<0||b1==0)
+		    			{
+		    		        a1=(int)(Math.random()*n); //生成一个随机数
+		                    b1=(int)(Math.random()*n); //生成一个随机数
+		                    }
+		    			a=a1;b=b1;
+		    			System.out.println(a+"/"+b+"=");
+		    	}
+		    		else if(yushu==0)
+		    		{
+		    			int a1=0;
+		    			int b1=0;
+		    			while(b1-a1<0||b1==0||b1%a1!=0)
+		    			{
+		    		        a1=(int)(Math.random()*n); //生成一个随机数
+		                    b1=(int)(Math.random()*n); //生成一个随机数
+		                    }
+		    			a=a1;b=b1;
+		    			System.out.println(a+"/"+b+"=");
+		    		}
+		    		}
+		    		
+		    	else if(chengchu==0)
+		    	{
+		    		System.out.println(a+"-"+b+"=");
+		    	}
+		    	  	
+		   }
+		    }
+		}
+			else if(choice==0)
+			{
+				for(int i=0;i<dingzhi;i++)
+				{
+					int a,b,c,d,a1,b1,c1,d1;
+			        a1=0;
+			        b1=0;
+			        c1=0;
+			        d1=0;
+			        while(b1==0||d1==0||b1-a1<0||d1-c1<0)
+			        {
+			        	a1=(int)(Math.random()*n); //生成一个随机数
+		                c1=(int)(Math.random()*n); //生成一个随机数
+				        b1=(int)(Math.random()*n); //生成一个随机数
+				        d1=(int)(Math.random()*n); //生成一个随机数
+				    }
+			        int a0=a1,b0=b1,c0=c1,d0=d1;
+			        while(a1!=0)
+			        {
+			        	int yush=b1%a1;
+			        	b1=a1;
+			        	a1=yush;
+			        }
+			        a=a0/b1;
+			        b=b0/b1;
+			        while(c1!=0)
+			        {
+			        	int yush=d1%c1;
+			        	d1=c1;
+			        	c1=yush;
+			        }
+			        c=c0/d1;
+			        d=d0/d1;
+			    int y=(int)(Math.random()*10000); //生成一个随机数
+			    int x=y%4;
+		        if(x==0)
+		        {
+		        	if(a==0&&c==0)
+		        	{
+		        		System.out.println("0"+" + "+"0"+" = ");
+		        	}
+		        	else if(a==0)
+		        	{
+		        		System.out.println("0"+" + "+"( "+c+"/"+d+" )"+" = ");
+		        	}
+		        	else if(c==0)
+		        	{
+		        		System.out.println("( "+a+"/"+b+" )"+" + "+"0"+" = ");
+		        	}
+		        	else
+		        	{
+		        		System.out.println("( "+a+"/"+b+" )"+" + "+"( "+c+"/"+d+" )"+" = ");
+		        	}
+		        	}
+		        else if(x==1)
+		        {
+		        	if(a==0&&c==0)
+		        	{
+		        		System.out.println("0"+" - "+"0"+" = ");
+		        	}
+		        	else if(a==0)
+		        	{
+		        		System.out.println("0"+" - "+"( "+c+"/"+d+" )"+" = ");
+		        	}
+		        	else if(c==0)
+		        	{
+		        		System.out.println("( "+a+"/"+b+" )"+" - "+"0"+" = ");
+		        	}
+		        	else
+		        	{
+		        		System.out.println("( "+a+"/"+b+" )"+" - "+"( "+c+"/"+d+" )"+" = ");
+		        	}
+		        	}
+		        else if(x==2)
+		        {
+		        	if(chengchu==2)
+		        	{
+		        		if(a==0&&c==1)
+			        	{
+			        		System.out.println("0"+" * "+"0"+" = ");
+			        	}
+			        	else if(a==0)
+			        	{
+			        		System.out.println("0"+" * "+"( "+c+"/"+d+" )"+" = ");
+			        	}
+			        	else if(c==0)
+			        	{
+			        		System.out.println("( "+a+"/"+b+" )"+" * "+"0"+" = ");
+			        	}
+			        	else
+			        	{
+			        		System.out.println("( "+a+"/"+b+" )"+" * "+"( "+c+"/"+d+" )"+" = ");
+			        	}
+		        	}
+		        	else if(chengchu==0)
+		        	{
+		        		if(a==0&&c==0)
+			        	{
+			        		System.out.println("0"+" - "+"0"+" = ");
+			        	}
+			        	else if(a==0)
+			        	{
+			        		System.out.println("0"+" - "+"( "+c+"/"+d+" )"+" = ");
+			        	}
+			        	else if(c==0)
+			        	{
+			        		System.out.println("( "+a+"/"+b+" )"+" - "+"0"+" = ");
+			        	}
+			        	else
+			        	{
+			        		System.out.println("( "+a+"/"+b+" )"+" - "+"( "+c+"/"+d+" )"+" = ");
+			        	}
+		        	}
+			        }
+		       else if(x==3)
+		        {
+		    	   if(chengchu==1)
+		        {
+		    		   if(yushu==1)
+		    		   {
+		    			   if(a==0&&c==0)
+		    			   {
+		    				   System.out.println("0"+" / "+"0"+" = ");	
+		    				   }
+		        	       else if(a==0)
+		        	       {
+		        		      System.out.println("0"+" / "+"( "+c+"/"+d+" )"+" = ");
+		        	          }
+		        	      else if(c==0)
+		        	      {
+		        		      System.out.println("( "+a+"/"+b+" )"+" / "+"0"+" = ");
+		        	          }
+		        	     else
+		        	     {
+		        		    System.out.println("( "+a+"/"+b+" )"+" / "+"( "+c+"/"+d+" )"+" = ");
+		        	         }
+		    		   }
+		    		   }
+		    	   else if(chengchu==0)
+		    	   {
+		    		   if(a==0&&c==0)
+			        	{
+			        		System.out.println("0"+" + "+"0"+" = ");
+			        	}
+			        	else if(a==0)
+			        	{
+			        		System.out.println("0"+" + "+"( "+c+"/"+d+" )"+" = ");
+			        	}
+			        	else if(c==0)
+			        	{
+			        		System.out.println("( "+a+"/"+b+" )"+" + "+"0"+" = ");
+			        	}
+			        	else
+			        	{
+			        		System.out.println("( "+a+"/"+b+" )"+" + "+"( "+c+"/"+d+" )"+" = ");
+			        	}
+		    	   }
+			    	}
+				}
+			}
+
+	}
+
+}
